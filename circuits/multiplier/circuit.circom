@@ -1,16 +1,30 @@
-pragma circom 2.0.0;
+template ANDGate(inputs a, b, output o) {
+  signal a_internal;
+  signal b_internal;
 
-/*This circuit template checks that c is the multiplication of a and b.*/  
+  a_internal <== a;
+  b_internal <== b;
 
-template Multiplier2 () {  
-
-   // Declaration of signals.  
-   signal input a;  
-   signal input b;  
-   signal output c;  
-
-   // Constraints.  
-   c <== a * b;  
+  o <== a_internal * b_internal;
 }
 
-component main = Multiplier2();
+component Main =  ANDGate(A, B, O);
+
+template Test() {
+  signal testInputA;
+  signal testInputB;
+  signal testOutput;
+
+  signal expectedOutput;
+
+  testInputA <== 0;
+  testInputB <== 1;
+  expectedOutput <== 0;
+
+  Main(A, testInputA, testInputB, testOutput);
+
+  // Check if the actual output matches the expected output
+  check testOutput == expectedOutput;
+}
+
+component TestCircuit = Test();
