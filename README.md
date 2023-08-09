@@ -1,4 +1,4 @@
-# Circuit Deployment on Polygon.
+# Circuit Deployment on Polygon
 This repository contains the imlementation of the given circuit diagram using circom and also demonstrates how to deploy it on Polygon Mumbai Testnet.
 
 # Circuit Implementation
