@@ -9,8 +9,8 @@ It takes two input signals, a and b. It calculates the logical AND of a and b us
 # Install
 npm i
 
-Compile
-# npx hardhat circom This will generate the out file with circuit intermediaries and geneate the MultiplierVerifier.sol contract
+# Compile
+npx hardhat circom This will generate the out file with circuit intermediaries and geneate the MultiplierVerifier.sol contract
 
 # To prove you know the inputs A (0) & B (1) that yield Q=0 as output.
 Inside your input.json file paste { "a": "0", "b": "1" }
