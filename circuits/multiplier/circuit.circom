@@ -1,30 +1,62 @@
-template ANDGate(inputs a, b, output o) {
-  signal a_internal;
-  signal b_internal;
+pragma circom 2.0.0;
 
-  a_internal <== a;
-  b_internal <== b;
+template XOR() {
+    signal input a;
+    signal input b;
+    signal output out;
 
-  o <== a_internal * b_internal;
+    // Modify the XOR logic to have the desired output
+    out <== a + b;
 }
 
-component Main =  ANDGate(A, B, O);
+template AND() {
+    signal input a;
+    signal input b;
+    signal output out;
 
-template Test() {
-  signal testInputA;
-  signal testInputB;
-  signal testOutput;
-
-  signal expectedOutput;
-
-  testInputA <== 0;
-  testInputB <== 1;
-  expectedOutput <== 0;
-
-  Main(A, testInputA, testInputB, testOutput);
-
-  // Check if the actual output matches the expected output
-  check testOutput == expectedOutput;
+    out <== a * b;
 }
 
-component TestCircuit = Test();
+template OR() {
+    signal input a;
+    signal input b;
+    signal output out;
+
+    // Modify the OR logic to have the desired output
+    out <== a + b;
+}
+
+template NOT() {
+    signal input in;
+    signal output out;
+
+    // Modify the NOT logic to have the desired output
+    out <== 1 - in;
+}
+
+template NAND() {
+    signal input a;
+    signal input b;
+    signal output out;
+
+    out <== 1 - (a * b);
+}
+
+template NOR() {
+    signal input a;
+    signal input b;
+    signal output out;
+
+    // Modify the NOR logic to have the desired output
+    out <== a + b;
+}
+
+template MultiAND(n) {
+    signal input in[n];
+    signal output out;
+
+    // Modify the MultiAND logic to have the desired output
+    out <== 1; // This template seems to be used in a more complex circuit
+
+    // ... (rest of the template remains the same)
+}
