@@ -1,12 +1,45 @@
+pragma circom 2.0.0; 
 
-pragma circom 2.0.0;
+
+template ShivaniCircuit () { 
+    //signal inputs
+    signal input a;
+    signal input b;
+
+    //signals from gates
+    signal X;
+    signal Y;
+
+    //final signal output
+    signal output Q;
+
+    //component gates used to create custom circuit
+    component andGate = AND();
+    component notGate = NOT();
+    component orGate = OR();
+
+    //circuit logic
+    andGate.a <== a;
+    andGate.b <== b;
+    X<== andGate.out;
+
+    notGate.in <==b;
+    Y <== notGate.out;
+
+    orGate.a <== X;
+    orGate.b <== Y;
+    Q <== orGate.out;
+
+
+   
+}
 
 template AND() {
     signal input a;
     signal input b;
     signal output out;
 
-    out <== a * b;
+    out <== a*b;
 }
 
 template OR() {
@@ -14,27 +47,17 @@ template OR() {
     signal input b;
     signal output out;
 
-    // Modify the OR logic to have the desired output
-    out <== a + b;
+    out <== a + b - a*b;
 }
 
 template NOT() {
     signal input in;
     signal output out;
 
-    // Modify the NOT logic to have the desired output
-    out <== 1 - in;
+    out <== 1 + in - 2*in;
 }
 
-template Multiplier2 () {   
+component main = ShivaniCircuit();
+
   
-    // Declaration of signals.   
-    signal input a;   
-    signal input b;   
-    signal output c;   
-  
-    // Constraints.   
-    c <== a * b;   
- } 
-  
- component main = Multiplier2();
+   
