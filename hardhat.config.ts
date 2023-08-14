@@ -12,22 +12,23 @@ process.env.BASE_PATH = __dirname;
 // tasks
 import "./tasks/newcircuit.ts"
 
-const config: HardhatUserConfig = { 
-  solidity: { 
-    compilers: [ 
-      { 
-        version: "0.8.19", 
-      }, 
-      { 
-        version: "0.6.11", 
-      } 
-    ] 
-  }, 
-  networks:{ 
-  mumbai: { url :`https://rpc.ankr.com/polygon_mumbai`, 
-  accounts: [process.env.MUMBAIPRIVATEKEY]
- } 
-},
+const config: HardhatUserConfig = {
+  solidity: {
+    compilers: [
+      {
+        version: "0.8.17",
+      },
+      {
+        version: "0.6.11",
+      }
+    ]
+  },
+  networks :{
+    mumbai: {
+      url: `https://rpc.ankr.com/polygon_mumbai`,
+      accounts: [process.env.MUMBAIPRIVATEKEY]
+    }
+  },
   circom: {
     // (optional) Base path for input files, defaults to `./circuits/`
     inputBasePath: "./circuits",
